@@ -1,6 +1,6 @@
 const player1 = {
   name: "Китана",
-  hp: 80,
+  hp: 65,
   img: "http://reactmarathon-api.herokuapp.com/assets/kitana.gif",
   weapon: ["Боевые вееры"],
   attack: function (name) {
@@ -10,7 +10,7 @@ const player1 = {
 
 const player2 = {
   name: "Соня",
-  hp: 90,
+  hp: 80,
   img: "http://reactmarathon-api.herokuapp.com/assets/sonya.gif",
   weapon: ["Бамбуковые палки"],
   attack: function (name) {
@@ -18,7 +18,7 @@ const player2 = {
   },
 };
 
-function createPlayer(classPlayer, playerName, hp, imgSrc) {
+function createPlayer(classPlayer, player) {
   const $player = document.createElement("div");
   $player.classList.add(classPlayer);
 
@@ -26,12 +26,12 @@ function createPlayer(classPlayer, playerName, hp, imgSrc) {
   $progressbar.classList.add("progressbar");
 
   const $life = document.createElement("div");
-  $life.style.width = `${hp}%`;
+  $life.style.width = `${player.hp}%`;
   $life.classList.add("life");
 
   const $name = document.createElement("div");
   $name.classList.add("name");
-  $name.innerText = playerName;
+  $name.innerText = player.name;
 
   $progressbar.appendChild($life);
   $progressbar.appendChild($name);
@@ -40,7 +40,7 @@ function createPlayer(classPlayer, playerName, hp, imgSrc) {
   $character.classList.add("character");
 
   const $img = document.createElement("img");
-  $img.src = imgSrc;
+  $img.src = player.img;
   $character.appendChild($img);
 
   $player.appendChild($progressbar);
@@ -49,5 +49,5 @@ function createPlayer(classPlayer, playerName, hp, imgSrc) {
   $arenas.appendChild($player);
 }
 
-createPlayer("player1", player1.name, player1.hp, player1.img);
-createPlayer("player2", player2.name, player2.hp, player2.img);
+createPlayer("player1", player1);
+createPlayer("player2", player2);
